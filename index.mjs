@@ -2,6 +2,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import methodOverride from 'method-override';
 import cors from 'cors';
+import bindRoutes from './routes.mjs';
 
 // Initialise Express instance
 const app = express();
@@ -30,6 +31,9 @@ app.use(methodOverride('_method'));
 
 // Expose the files stored in the public folder
 app.use(express.static('public'));
+
+// Bind route definitions to the Express application
+bindRoutes(app);
 
 // set the port to the environment PORT variable or 3004 if the former is falsy
 const PORT = process.env.PORT || 3004;
