@@ -1,0 +1,20 @@
+{
+  "name": "freight-buddy-mobile-backend",
+  "version": "1.0.0",
+  "description": "Rocket Academy Project 6",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lightweightcoder/freight-buddy-mobile-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lightweightcoder/freight-buddy-mobile-backend/issues"
+  },
+  "homepage": "https://github.com/lightweightcoder/freight-buddy-mobile-backend#readme"
+}
