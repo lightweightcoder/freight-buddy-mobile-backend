@@ -1,3 +1,6 @@
+# File that sometimes appears on MacOS
+.DS_Store
+
 # Logs
 logs
 *.log
