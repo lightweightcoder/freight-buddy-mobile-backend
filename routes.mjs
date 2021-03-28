@@ -1,4 +1,5 @@
 import db from './models/index.mjs';
+
 // import controllers here
 
 export default function bindRoutes(app) {
