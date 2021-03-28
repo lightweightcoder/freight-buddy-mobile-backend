@@ -14,4 +14,4 @@ jobs:
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "freight-buddy-mobile-backend" #Must be unique in Heroku
-          heroku_email: "akira@awongh.com"
+          heroku_email: "alvinljt@gmail.com"
