@@ -79,6 +79,7 @@ export default function initUsersController(db) {
           loginSuccess: true,
           userId: user.id,
           loggedInHash,
+          userCountry: user.country,
         });
       }
     } catch (error) {
