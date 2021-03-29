@@ -48,7 +48,47 @@ export default function initUsersController(db) {
     }
   };
 
+  const demoLogin = async (req, res) => {
+    console.log('get request to login to demo user came in');
+
+    try {
+      const hashedPasswordInput = getHash('demo-user1');
+
+      // try to find the demo user from the database
+      const user = await db.User.findOne(
+        {
+          where: { email: 'demo1@gmail.com', password: hashedPasswordInput },
+        },
+      );
+
+      // check if demo user is found
+      if (user === null) {
+        // if demo user is not found
+        console.log('demo user not found');
+
+        // send response that login failed
+        res.send({ loginSuccess: false });
+      } else {
+        console.log('found user, logged in!');
+
+        // generate a hashed userId
+        const loggedInHash = getHash(user.id);
+
+        // send a success response and authentication details
+        res.send({
+          loginSuccess: true,
+          userId: user.id,
+          loggedInHash,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      // send error to browser
+      res.status(500).send(error);
+    }
+  };
+
   return {
-    login,
+    login, demoLogin,
   };
 }

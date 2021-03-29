@@ -11,4 +11,7 @@ export default function bindRoutes(app) {
   // define route matchers here using app ======
   // accept login form request
   app.post('/login', UsersController.login);
+
+  // accept a request to login to a demo user
+  app.get('/demo-login', UsersController.demoLogin);
 }
