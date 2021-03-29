@@ -1,8 +1,6 @@
 export default function initRequestsController(db) {
   const index = async (req, res) => {
     console.log('request to render list of requests');
-    console.log('req.params', req.params);
-    console.log('req.query', req.query);
 
     // set object to store data to be sent to response
     const data = {};
@@ -16,7 +14,7 @@ export default function initRequestsController(db) {
         // only find requests with 'requested' status and to the user's country
         where: {
           status: 'requested',
-          // country,
+          country: req.query.country,
         },
         // order by latest request
         order: [
