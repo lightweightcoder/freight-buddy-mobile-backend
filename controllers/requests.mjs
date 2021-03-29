@@ -16,6 +16,13 @@ export default function initRequestsController(db) {
           status: 'requested',
           country: req.query.country,
         },
+        include: [
+          {
+            model: db.User,
+            as: 'requester',
+            attributes: ['name', 'photo'],
+          },
+        ],
         // order by latest request
         order: [
           ['createdAt', 'DESC'],
