@@ -22,4 +22,7 @@ export default function bindRoutes(app) {
 
   // get a list of requests made by the user
   app.get('/users/:userId/requests', UsersController.requests);
+
+  // update a request's status
+  app.put('/requests/:id/status', RequestsController.updateStatus);
 }
