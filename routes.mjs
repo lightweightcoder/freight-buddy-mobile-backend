@@ -19,4 +19,7 @@ export default function bindRoutes(app) {
 
   // get a list of available requests to the user's country
   app.get('/requests', RequestsController.index);
+
+  // get a list of requests made by the user
+  app.get('/users/:userId/requests', UsersController.requests);
 }

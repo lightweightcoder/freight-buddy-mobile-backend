@@ -34,12 +34,12 @@ export default function initUsersController(db) {
         // generate a hashed userId
         const loggedInHash = getHash(user.id);
 
-        // add userId and hashed userId to response
-        templateData.userId = user.id;
-        templateData.loggedInHash = loggedInHash;
-
-        // redirect to home page
-        res.send(templateData);
+        // send a success response and authentication details
+        res.send({
+          userId: user.id,
+          loggedInHash,
+          userCountry: user.country,
+        });
       }
     } catch (error) {
       console.log(error);
@@ -76,7 +76,6 @@ export default function initUsersController(db) {
 
         // send a success response and authentication details
         res.send({
-          loginSuccess: true,
           userId: user.id,
           loggedInHash,
           userCountry: user.country,
@@ -89,7 +88,41 @@ export default function initUsersController(db) {
     }
   };
 
+  const requests = async (req, res) => {
+    console.log('get request for user requests came in');
+    console.log('req.params', req.params);
+    // get the user id from the url paramaters
+    const { userId } = req.params;
+
+    // set object to store data to be sent to response
+    const data = {};
+
+    try {
+      // find all requests belonging to that user
+      const userRequests = await db.Request.findAll({
+        where: {
+          requesterId: userId,
+        },
+        include: [
+          { model: db.User, as: 'requester', attributes: ['name', 'photo'] },
+        ],
+        order: [
+          ['createdAt', 'DESC'],
+        ],
+      });
+
+      data.userRequests = userRequests;
+
+      // send the user requests to the response
+      res.send(data);
+    } catch (error) {
+      console.log(error);
+      // send error to browser
+      res.status(500).send(error);
+    }
+  };
+
   return {
-    login, demoLogin,
+    login, demoLogin, requests,
   };
 }
