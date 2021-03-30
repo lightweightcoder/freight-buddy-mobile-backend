@@ -90,7 +90,7 @@ export default function initUsersController(db) {
 
   const requests = async (req, res) => {
     console.log('get request for user requests came in');
-    console.log('req.params', req.params);
+
     // get the user id from the url paramaters
     const { userId } = req.params;
 
