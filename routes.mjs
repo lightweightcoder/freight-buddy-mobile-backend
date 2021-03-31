@@ -25,4 +25,7 @@ export default function bindRoutes(app) {
 
   // update a request's status
   app.put('/requests/:id/status', RequestsController.updateStatus);
+
+  // creates a new request made by the user
+  app.post('/requests', RequestsController.create);
 }

@@ -112,7 +112,46 @@ export default function initRequestsController(db) {
     }
   };
 
+  const create = async (req, res) => {
+    console.log('request to create a delivery request');
+
+    // set object to store data to be sent to response
+    const data = {};
+
+    try {
+      // get the user's id and request details from the request body
+      const { userId, requestDetails } = req.body;
+
+      requestDetails.requesterId = userId;
+      requestDetails.status = 'requested';
+
+      await db.Request.create(requestDetails);
+
+      // retrieve all the user's requests
+      const userRequests = await db.Request.findAll({
+        where: {
+          requesterId: userId,
+        },
+        include: [
+          { model: db.User, as: 'requester', attributes: ['name', 'photo'] },
+        ],
+        order: [
+          ['createdAt', 'DESC'],
+        ],
+      });
+
+      data.userRequests = userRequests;
+
+      // send the user requests data to the response
+      res.send(data);
+    } catch (error) {
+      console.log(error);
+      // send error to browser
+      res.status(500).send(error);
+    }
+  };
+
   return {
-    index, updateStatus,
+    index, updateStatus, create,
   };
 }
