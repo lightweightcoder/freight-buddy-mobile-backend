@@ -328,7 +328,36 @@ const requestsList = [
     created_at: new Date(),
     updated_at: new Date(),
   },
-
+  {
+    category: 'Food & Drinks',
+    country: 'Korea',
+    helper_id: null,
+    requester_id: 9,
+    product_name: 'Kimchi',
+    description: '2 bottles of Kimchi. Contact me at 89760004.',
+    price: '30',
+    reference_link: 'http://www.koryomart.co.kr/?product=cj-bibigo-sliced-radish-kimchi-%eb%b9%84%eb%b9%84%ea%b3%a0-%ea%b9%8d%eb%91%90%ea%b8%b0-480g-bottle',
+    payment_filename: '/images/payments/wire-transfer.jpg',
+    status: 'cancelled',
+    shipping_address: 'Tenah Merah blk700A #09-891',
+    created_at: new Date(),
+    updated_at: new Date(),
+  },
+  {
+    category: 'Beauty',
+    country: 'United States of America',
+    helper_id: null,
+    requester_id: 9,
+    product_name: 'Leneige Water Bank Hydro Gel',
+    description: '2 bottles. Contact me at 89760004.',
+    price: '70',
+    reference_link: 'https://us.laneige.com/collections/water-bank/products/water-bank-hydro-gel',
+    payment_filename: '/images/payments/wire-transfer.jpg',
+    status: 'requested',
+    shipping_address: 'Tenah Merah blk700A #09-891',
+    created_at: new Date(),
+    updated_at: new Date(),
+  },
 ];
 
 // export the seed data as a module
