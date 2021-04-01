@@ -122,7 +122,36 @@ export default function initUsersController(db) {
     }
   };
 
+  const show = async (req, res) => {
+    console.log('get request for user profile came in');
+
+    // get the user id from the url paramaters
+    const { userId } = req.params;
+
+    // set object to store data to be sent to response
+    const data = {};
+
+    try {
+      // find all requests belonging to that user
+      const userProfile = await db.User.findOne({
+        where: {
+          id: userId,
+        },
+        attributes: ['name', 'email', 'address', 'country'],
+      });
+
+      data.userProfile = userProfile;
+
+      // send the user requests to the response
+      res.send(data);
+    } catch (error) {
+      console.log(error);
+      // send error to browser
+      res.status(500).send(error);
+    }
+  };
+
   return {
-    login, demoLogin, requests,
+    login, demoLogin, requests, show,
   };
 }

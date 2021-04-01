@@ -28,4 +28,7 @@ export default function bindRoutes(app) {
 
   // creates a new request made by the user
   app.post('/requests', RequestsController.create);
+
+  // get a user's profile
+  app.get('/users/:userId', UsersController.show);
 }
