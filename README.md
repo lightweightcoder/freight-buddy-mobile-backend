@@ -14,6 +14,11 @@ Rocket Academy SWE1 Project 6
 
 An app that allows people (requesters) to enlist the help of others (helpers) overseas to purchase products from those overseas countries and ship them to the requesters' country.
 
+## Demo Video on how to use Freight Buddy Mobile
+
+Click the picture below to view the demo of freight buddy
+[![demo video](./documents/demo-video.png)](https://www.youtube.com/watch?v=KqWeAn5WWgs)
+
 ## ERD
 
 ![ERD](./documents/ERD.png)
